@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Decidir</string>
+
+    <!--CONTROLES-->
+    <string name="edtOpcion">Escribe una opción</string>
+    <string name="edtCategoria">Escribe una categoría</string>
+    <string name="btnAgregarOpcion">Agregar Opción</string>
+    <string name="btnDecidir">Decidir</string>
+    <string name="btnAgregarCategoria">Agregar categoría</string>
+    <string name="txtResultado">Tu resultado se devería ver aquí</string>
+
+    <!--ERRORES-->
+
+
+</resources>
