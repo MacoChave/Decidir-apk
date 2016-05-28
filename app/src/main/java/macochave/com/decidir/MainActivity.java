@@ -36,12 +36,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAddNewOpcion = (Button) findViewById(R.id.btnAddNewOpcion);
         btnAddCategoria = (Button) findViewById(R.id.btnAddCategoria);
 
+
+
         btnAddOpcion.setOnClickListener(this);
         btnDedicir1.setOnClickListener(this);
         btnDecidir2.setOnClickListener(this);
         btnAddNewOpcion.setOnClickListener(this);
         btnAddCategoria.setOnClickListener(this);
 
+        configTab();
+
+        /*
         Resources resources = getResources();
         tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup();
@@ -62,9 +67,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tabHost.addTab(spec3);
 
         TabHost.TabSpec spec4 = tabHost.newTabSpec("mitab4");
-        spec3.setContent(R.id.tab4);
-        spec3.setIndicator("Agregar categoría", resources.getDrawable(android.R.drawable.btn_dropdown));
+        spec4.setContent(R.id.tab4);
+        spec4.setIndicator("Agregar categoria", resources.getDrawable(android.R.drawable.ic_input_add));
+        tabHost.addTab(spec4);
+
+        tabHost.setCurrentTab(0);
+        */
+    }
+
+    private void configTab() {
+        Resources resources = getResources();
+        tabHost = (TabHost) findViewById(R.id.tabHost);
+        tabHost.setup();
+
+        TabHost.TabSpec spec1 = tabHost.newTabSpec("mitab1");
+        spec1.setContent(R.id.tab1);
+        spec1.setIndicator("Desición rápida", resources.getDrawable(android.R.drawable.ic_dialog_info));
+        tabHost.addTab(spec1);
+
+        TabHost.TabSpec spec2 = tabHost.newTabSpec("mitab2");
+        spec2.setContent(R.id.tab2);
+        spec2.setIndicator("Desición por categoría", resources.getDrawable(android.R.drawable.ic_media_play));
+        tabHost.addTab(spec2);
+
+        TabHost.TabSpec spec3 = tabHost.newTabSpec("mitab3");
+        spec3.setContent(R.id.tab3);
+        spec3.setIndicator("Agregar opción", resources.getDrawable(android.R.drawable.ic_input_add));
         tabHost.addTab(spec3);
+
+        TabHost.TabSpec spec4 = tabHost.newTabSpec("mitab4");
+        spec4.setContent(R.id.tab4);
+        spec4.setIndicator("Agregar categoria", resources.getDrawable(android.R.drawable.ic_input_add));
+        tabHost.addTab(spec4);
 
         tabHost.setCurrentTab(0);
     }
@@ -92,17 +126,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //Log.i("Boton", "Boton decidir rápido presionado");
                 } catch (Exception e) {
                     Log.i("Boton decidir rápido", e.getMessage());
-                    Toast.makeText(getApplicationContext(), "No puede decidir :'(, lo siento!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "No pude decidir :'(, lo siento!", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btnDecidirC:
                 Log.i("Boton", "Boton decidir con categoria presionado");
+                Toast.makeText(this, "Este botón no hace nada XD", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnAddNewOpcion:
                 Log.i("Boton", "Boton agregar nueva opcion presionado");
+                Toast.makeText(this, "Este botón no hace nada XD", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnAddCategoria:
                 Log.i("Boton", "Boton agregar nueva categoria presionado");
+                Toast.makeText(this, "Este botón no hace nada XD", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

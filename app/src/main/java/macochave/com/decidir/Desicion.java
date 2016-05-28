@@ -27,8 +27,12 @@ public class Desicion {
         String resultado;
 
         tope = listaOpcion.size();
-        Log.i("Lista de opciones", "Hay " + tope + " en la lista");
-        Toast.makeText(context, "Encontré " + (tope + 1) + " elementos :D", Toast.LENGTH_SHORT).show();
+        if (tope > 0) {
+            Log.i("Lista de opciones", "Hay " + tope + " en la lista");
+            Toast.makeText(context, "Encontré " + (tope) + " elementos :D", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Pero si no ingresaste nada :|", Toast.LENGTH_SHORT).show();
+        }
 
         Random random = new Random();
         indice = random.nextInt(tope);
