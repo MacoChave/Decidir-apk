@@ -1,15 +1,24 @@
 package macochave.com.decidir;
 
 /**
- * Created by u on 22/05/2016.
+ * Created by MacoChave on 22/05/2016.
  */
 public class Opcion {
 
+    private int id;
     private String opcion;
-    private String urlImagen;
+    private String foto;
     private int idCategoria;
 
     public Opcion() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getOpcion() {
@@ -20,12 +29,12 @@ public class Opcion {
         this.opcion = opcion;
     }
 
-    public String getUrlImagen() {
-        return urlImagen;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public int getIdCategoria() {

@@ -8,5 +8,6 @@
     <string name="btnDecidir">Decidir</string>
     <string name="btnAgregarCategoria">Agregar categoría</string>
     <string name="txtResultado">Tu resultado se devería ver aquí</string>
+    <string name="infoSpinner">Selecciona una categoría</string>
 
 </resources>

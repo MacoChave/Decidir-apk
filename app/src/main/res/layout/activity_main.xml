@@ -71,6 +71,13 @@
                     android:paddingTop="10dp"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/infoSpinnerDecidir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@string/infoSpinner" />
+
                     <Spinner
                         android:id="@+id/spinnerDecidir"
                         android:layout_width="match_parent"
@@ -88,6 +95,7 @@
                         android:id="@+id/txtResultadoC"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
                         android:text="@string/txtResultado" />
                 </LinearLayout>
 
@@ -98,8 +106,15 @@
                     android:paddingTop="10dp"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/InfoSpinnerAgregar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@string/infoSpinner" />
+
                     <Spinner
-                        android:id="@+id/spinner2"
+                        android:id="@+id/spinnerAgregar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp" />
@@ -109,6 +124,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
+                        android:gravity="center_horizontal"
                         android:hint="@string/edtOpcion"/>
 
                     <Button
@@ -130,6 +146,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
+                        android:gravity="center_horizontal"
                         android:hint="@string/edtCategoria"/>
 
                     <Button
