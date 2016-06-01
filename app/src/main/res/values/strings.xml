@@ -10,4 +10,9 @@
     <string name="txtResultado">Tu resultado se devería ver aquí</string>
     <string name="infoSpinner">Selecciona una categoría</string>
 
+    <!--MENU-->
+    <string name="menu_informacion">Acerca De</string>
+    <string name="menu_ayuda">Ayuda</string>
+    <string name="menu_salir">Salir</string>
+
 </resources>

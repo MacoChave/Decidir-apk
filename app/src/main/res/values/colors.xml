@@ -2,10 +2,11 @@
 <resources>
     <color name="colorPrimary">#9C27B0</color>
     <color name="colorPrimaryDark">#6A1B9A</color>
-    <color name="colorPrimaryLight">#F3E5F5</color>
+    <color name="colorPrimaryLight">#f3e5f5</color>
     <color name="colorAccent">#3d5afe</color>
     <color name="colorDivider">#B6B6B6</color>
     <color name="textPrimary">#212121</color>
     <color name="textSecondary">#727272</color>
     <color name="textIcon">#FFFFFF</color>
+    <color name="colorBackground">#b1a9d8</color>
 </resources>

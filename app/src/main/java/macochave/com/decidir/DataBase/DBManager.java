@@ -82,6 +82,7 @@ public class DBManager {
     public ArrayList<Opcion> selectOpcionCategoria (int id_categoria) {
         ArrayList<Opcion> list = new ArrayList<>();
         String select = "SELECT * FROM " + OPCION + " WHERE " + OP_VALUES[3] + " = " + id_categoria;
+        Log.i("Consulta select", select);
 
         Cursor cursor = database.rawQuery(select, null);
 
@@ -102,6 +103,7 @@ public class DBManager {
     public int selectIdOpcion (String nombre, int id_categoria) {
         int id;
         String select = "SELECT " + OP_VALUES[0] + " FROM " + OPCION + " WHERE " + OP_VALUES[1] + " = '" + nombre + "' & " + OP_VALUES[3] + " = " + id_categoria;
+        Log.i("Consulta select", select);
 
         Cursor cursor = database.rawQuery(select, null);
         if (cursor.moveToFirst()) {
@@ -114,7 +116,7 @@ public class DBManager {
     public int selectIdCategoria (String nombre) {
         int id;
         String select = "SELECT " + CT_VALUES[0] + " FROM " + CATEGORIA + " WHERE " + CT_VALUES[1] + " = '" + nombre + "'";
-        Log.i("Consulta sql", select);
+        Log.i("Consulta select", select);
 
         Cursor cursor = database.rawQuery(select, null);
         if (cursor.moveToFirst()) {

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="macochave.com.decidir.MainActivity">
+    tools:context="macochave.com.decidir.MainActivity" >
 
     <TabHost
         android:layout_width="match_parent"
@@ -25,20 +25,22 @@
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/colorBackground"
+                android:padding="20dp">
 
                 <LinearLayout
                     android:id="@+id/tab1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="10dp"
+                    android:paddingTop="15dp"
                     android:orientation="vertical">
 
                     <EditText
                         android:id="@+id/edtAddOpcion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="15dp"
                         android:gravity="center_horizontal"
                         android:hint="@string/edtOpcion"/>
 
@@ -46,14 +48,18 @@
                         android:id="@+id/btnAddOpcionF"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@color/colorPrimaryDark"
+                        android:textColor="@color/textIcon"
                         android:text="@string/btnAgregarOpcion" />
 
                     <Button
                         android:id="@+id/btnDecidirF"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@color/colorPrimaryDark"
+                        android:textColor="@color/textIcon"
                         android:text="@string/btnDecidir" />
 
                     <TextView
@@ -68,7 +74,7 @@
                     android:id="@+id/tab2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="10dp"
+                    android:paddingTop="15dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -76,19 +82,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/infoSpinner" />
 
                     <Spinner
                         android:id="@+id/spinnerDecidir"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp" />
+                        android:layout_marginBottom="15dp" />
 
                     <Button
                         android:id="@+id/btnDecidirC"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@color/colorPrimaryDark"
+                        android:textColor="@color/textIcon"
                         android:text="@string/btnDecidir" />
 
                     <TextView
@@ -103,7 +112,7 @@
                     android:id="@+id/tab3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="10dp"
+                    android:paddingTop="15dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -111,19 +120,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/infoSpinner" />
 
                     <Spinner
                         android:id="@+id/spinnerAgregar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp" />
+                        android:layout_marginBottom="15dp" />
 
                     <EditText
                         android:id="@+id/edtAddNewOpcion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="15dp"
                         android:gravity="center_horizontal"
                         android:hint="@string/edtOpcion"/>
 
@@ -131,6 +141,8 @@
                         android:id="@+id/btnAddNewOpcion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/colorPrimaryDark"
+                        android:textColor="@color/textIcon"
                         android:text="@string/btnAgregarOpcion" />
                 </LinearLayout>
 
@@ -138,14 +150,14 @@
                     android:id="@+id/tab4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="10dp"
+                    android:paddingTop="15dp"
                     android:orientation="vertical">
 
                     <EditText
                         android:id="@+id/edtAddCategoria"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="15dp"
                         android:gravity="center_horizontal"
                         android:hint="@string/edtCategoria"/>
 
@@ -153,6 +165,8 @@
                         android:id="@+id/btnAddCategoria"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/colorPrimaryDark"
+                        android:textColor="@color/textIcon"
                         android:text="@string/btnAgregarCategoria" />
                 </LinearLayout>
             </FrameLayout>

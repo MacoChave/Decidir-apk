@@ -18,12 +18,19 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:divider="@color/colorDivider" />
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:background="@color/colorBackground">
 
                 <LinearLayout
                     android:id="@+id/tab1"
@@ -52,12 +59,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:background="@color/colorPrimaryDark"
+                            android:textColor="@color/textIcon"
                             android:text="@string/btnAgregarOpcion" />
 
                         <Button
                             android:id="@+id/btnDecidirF"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:background="@color/colorPrimaryDark"
+                            android:textColor="@color/textIcon"
                             android:text="@string/btnDecidir" />
                     </LinearLayout>
 
@@ -82,6 +97,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/infoSpinner" />
 
                     <Spinner
@@ -95,6 +111,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
+                        android:background="@color/colorPrimaryDark"
+                        android:textColor="@color/textIcon"
                         android:text="@string/btnDecidir" />
 
                     <TextView
@@ -117,6 +135,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/infoSpinner" />
 
                     <Spinner
@@ -137,6 +156,8 @@
                         android:id="@+id/btnAddNewOpcion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/colorPrimaryDark"
+                        android:textColor="@color/textIcon"
                         android:text="@string/btnAgregarOpcion" />
                 </LinearLayout>
 
@@ -159,6 +180,8 @@
                         android:id="@+id/btnAddCategoria"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/colorPrimaryDark"
+                        android:textColor="@color/textIcon"
                         android:text="@string/btnAgregarCategoria" />
                 </LinearLayout>
             </FrameLayout>

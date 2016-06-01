@@ -4,6 +4,8 @@ import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnAddOpcion, btnDedicir1, btnDecidir2, btnAddNewOpcion, btnAddCategoria;
     private Spinner categoriaT1, categoriaT2;
 
+    private static boolean mostrarToast;
+
     private int posicion;
     private static String selectItem;
 
@@ -46,20 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         cargarSpinner(categoriaT1);
         cargarSpinner(categoriaT2);
-        /*
-        try {
-            DBManager manager = new DBManager(getApplicationContext());
-
-            ArrayList<Categoria> list = manager.selectAllCategoria();
-            ArrayAdapter<Categoria> adapter = new ArrayAdapter<Categoria>(getApplication(), android.R.layout.simple_spinner_item, list);
-
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-            categoriaT1.setAdapter(adapter);
-            categoriaT2.setAdapter(adapter);
-        } catch (Exception e) {
-            Log.e("Cargar spinner", "Error: " + e.getMessage());
-        }*/
 
         categoriaT1.setOnItemSelectedListener(this);
         categoriaT2.setOnItemSelectedListener(this);
@@ -77,6 +67,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAddCategoria.setOnClickListener(this);
 
         configTab();
+
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_informacion:
+                Toast.makeText(getApplicationContext(), "APP Decidir", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_ayuda:
+                Toast.makeText(getApplication(), "Esto debería tener una ayuda", Toast.LENGTH_SHORT).show();
+            case R.id.action_salir:
+                Toast.makeText(getApplication(), "Debería de salir", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void cargarSpinner(Spinner spinner) {
@@ -84,14 +102,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             DBManager manager = new DBManager(getApplicationContext());
 
             ArrayList<Categoria> list = manager.selectAllCategoria();
-            ArrayAdapter<Categoria> adapter = new ArrayAdapter<Categoria>(getApplication(), android.R.layout.simple_spinner_item, list);
+            ArrayAdapter<Categoria> adapter = new ArrayAdapter<Categoria>(getApplication(), R.layout.item_spinner_totto, list);
 
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            adapter.setDropDownViewResource(R.layout.dropdown_spinner_totto);
 
             categoriaT1.setAdapter(adapter);
             categoriaT2.setAdapter(adapter);
         } catch (Exception e) {
-            Log.e("Cargar spinner", "Error: " + e.getMessage());
+            Log.e("Cargar spinner", e.getMessage().toString());
         }
     }
 
@@ -102,22 +120,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         TabHost.TabSpec spec1 = tabHost.newTabSpec("mitab1");
         spec1.setContent(R.id.tab1);
-        spec1.setIndicator("Desición rápida", resources.getDrawable(android.R.drawable.ic_dialog_info));
+        spec1.setIndicator("", resources.getDrawable(R.mipmap.ic_decision_rapida));
         tabHost.addTab(spec1);
 
         TabHost.TabSpec spec2 = tabHost.newTabSpec("mitab2");
         spec2.setContent(R.id.tab2);
-        spec2.setIndicator("Desición por categoría", resources.getDrawable(android.R.drawable.ic_media_play));
+        spec2.setIndicator("", resources.getDrawable(R.mipmap.ic_decision));
         tabHost.addTab(spec2);
 
         TabHost.TabSpec spec3 = tabHost.newTabSpec("mitab3");
         spec3.setContent(R.id.tab3);
-        spec3.setIndicator("Agregar opción", resources.getDrawable(android.R.drawable.ic_input_add));
+        spec3.setIndicator("", resources.getDrawable(R.mipmap.ic_agregar_opcion));
         tabHost.addTab(spec3);
 
         TabHost.TabSpec spec4 = tabHost.newTabSpec("mitab4");
         spec4.setContent(R.id.tab4);
-        spec4.setIndicator("Agregar categoria", resources.getDrawable(android.R.drawable.ic_input_add));
+        spec4.setIndicator("", resources.getDrawable(R.mipmap.ic_agregar_categoria));
         tabHost.addTab(spec4);
 
         tabHost.setCurrentTab(0);
@@ -129,43 +147,69 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.btnAddOpcionF:
                 String opcion = addOpcion.getText().toString();
-                if (opcion.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "No ingresaste una opcion :(", Toast.LENGTH_SHORT).show();
-                } else {
-                    d.addOpcionRapida(opcion);
-                    addOpcion.setText("");
-                    Toast.makeText(getApplicationContext(), "Ya agregué tu opción :D", Toast.LENGTH_SHORT).show();
-                    //Log.i("Boton", "Boton agregar opcion rápido presionado");
+                try {
+                    if (opcion.isEmpty() || opcion.equals(" ")){
+                        Toast.makeText(getApplicationContext(), "No ingresaste una opcion :(", Toast.LENGTH_SHORT).show();
+                    } else {
+                        d.addOpcionRapida(opcion);
+                        addOpcion.setText("");
+                        Toast.makeText(getApplicationContext(), "Ya agregué tu opción :D", Toast.LENGTH_SHORT).show();
+                        mostrarToast = true;
+                    }
+                } catch (Exception e) {
+                    Log.e("Agregar opcion", e.getMessage().toString());
                 }
                 break;
             case R.id.btnDecidirF:
                 try {
                     String resultado;
-                    resultado = d.decidirRapido(getApplication());
-                    Resultado1.setText(resultado);
+                    if (mostrarToast) {
+                        resultado = d.decidirRapido(getApplication(), mostrarToast);
+                        Resultado1.setText(resultado);
+                        mostrarToast = false;
+                    } else {
+                        resultado = d.decidirRapido(getApplication(), mostrarToast);
+                        Resultado1.setText(resultado);
+                    }
                     //Log.i("Boton", "Boton decidir rápido presionado");
                 } catch (Exception e) {
-                    Log.i("Boton decidir rápido", e.getMessage());
+                    Log.e("Decidir rapido", e.getMessage().toString());
                     Toast.makeText(getApplicationContext(), "No pude decidir :'(, lo siento!", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btnDecidirC:
                 try{
                     String resultado;
-                    resultado = d.decidir(getApplicationContext(), selectItem);
-                    Resultado2.setText(resultado.toString());
+                    if (mostrarToast) {
+                        resultado = d.decidir(getApplicationContext(), selectItem, mostrarToast);
+                        Resultado2.setText(resultado.toString());
+                        mostrarToast = false;
+                    } else {
+                        resultado = d.decidir(getApplicationContext(), selectItem, mostrarToast);
+                        Resultado2.setText(resultado.toString());
+                    }
                 } catch (Exception e) {
-                    //Log.i("Boton", "Boton decidir con categoria presionado");
-                    //Toast.makeText(this, "Este botón no hace nada XD", Toast.LENGTH_SHORT).show();
+                    Log.e("Decidir por categoria", e.getMessage().toString());
                 }
                 break;
             case R.id.btnAddNewOpcion:
-                Log.i("Boton", "Boton agregar nueva opcion presionado");
-                Toast.makeText(this, "Este botón no hace nada XD", Toast.LENGTH_SHORT).show();
+                try {
+                    String addOpcion = addNewOpcion.getText().toString();
+                    d.addNewOpcion(getApplicationContext(), addOpcion, selectItem);
+                    addNewOpcion.setText("");
+                } catch (Exception e) {
+                    Log.e("Nueva opcion", e.getMessage().toString());
+                }
+
                 break;
             case R.id.btnAddCategoria:
-                Log.i("Boton", "Boton agregar nueva categoria presionado");
-                Toast.makeText(this, "Este botón no hace nada XD", Toast.LENGTH_SHORT).show();
+                try {
+                    String addNewCategoria = addCategoria.getText().toString();
+                    d.addNewCategoria(getApplicationContext(), addNewCategoria);
+                    addCategoria.setText("");
+                } catch (Exception e) {
+                    Log.e("Nueva categoria", e.getMessage().toString());
+                }
                 break;
         }
     }
@@ -173,8 +217,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         this.posicion = position;
-        selectItem = parent.getItemAtPosition(position).toString();
-        Log.i("Spinner seleccionado", "Seleccion actual: " + selectItem);
+
+        switch (parent.getId()) {
+            case R.id.spinnerDecidir:
+                selectItem = parent.getItemAtPosition(position).toString();
+                mostrarToast = true;
+                Log.i("Spinner seleccionado", "Seleccion actual: " + selectItem);
+                break;
+            case R.id.spinnerAgregar:
+                selectItem = parent.getItemAtPosition(position).toString();
+                mostrarToast = true;
+                Log.i("Spinner seleccionado", "Seleccion actual: " + selectItem);
+                break;
+        }
     }
 
     @Override
